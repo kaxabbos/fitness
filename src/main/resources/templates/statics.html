@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Статистика - FITNESS</title>
+</head>
+<head th:insert="blocks/head :: head"></head>
+<body style="background-color: #a9e6f0">
+<div th:insert="blocks/nav :: nav"></div>
+<section class="text-center  testimonials">
+    <div class="container">
+        <h2 class="mb-5">Статистика</h2>
+        <div class="d-xl-flex justify-content-xl-center">
+            <div class="row" style="max-width: 500px;">
+                <div class="col">
+                    <p class="text-start text-nowrap" style="font-size: 20px;">Суммарная прибыль</p>
+                </div>
+                <div class="col">
+                    <p class="text-end" style="font-size: 20px;" th:text="${income}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>Название</h4>
+            </div>
+            <div class="col">
+                <h4>Цена</h4>
+            </div>
+            <div class="col">
+                <h4>Количество</h4>
+            </div>
+            <div class="col">
+                <h4>Прибыль</h4>
+            </div>
+        </div>
+        <div th:each="stat : ${statics}" class="row">
+            <div class="col">
+                <p class="text-start" style="font-size: 20px;" th:text="${stat.getSubs().name}"></p>
+            </div>
+            <div class="col">
+                <p class="text-end" style="font-size: 20px;" th:text="${stat.getSubs().price}"></p>
+            </div>
+            <div class="col">
+                <p class="text-end" style="font-size: 20px;"  th:text="${stat.count}"></p>
+            </div>
+            <div class="col">
+                <p class="text-end" style="font-size: 20px;" th:text="${stat.getSubs().price * stat.count}"></p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:insert="blocks/footer :: footer" class=" footer"></footer>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bs-init.js"></script>
+</body>
+
+</html>
